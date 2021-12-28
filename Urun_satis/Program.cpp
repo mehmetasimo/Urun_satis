@@ -5,14 +5,14 @@
 #include <iostream>							// Cok sayida iliskili dosya kullanimi icin proje tanitim dosyasinda yer alan kutuphaneler eklendi.
 #include <iomanip>							// Satirlar arasi islem komutu kullanimi icin eklenmistir.
 #include <fstream>							// Dosyalar uzerinde islem yapilmasi icin eklenmistir.
-#include <string>							  // Dosyada veri islemleri string tipindeki elemanlarla yapilacagi icin eklenmistir.
+#include <string>							// Dosyada veri islemleri string tipindeki elemanlarla yapilacagi icin eklenmistir.
 #include <stdio.h>
-#include <windows.h>						// Renkli komut satirlari kullanimi icin eklendi.
+#include <windows.h>							// Renkli komut satirlari kullanimi icin eklendi.
 
 
 using namespace std;
 
-bool urun_kontrol(string urunKodu);			// Programda kullanılan fonksiyonların prototipleri tanımlandı.
+bool urun_kontrol(string urunKodu);					// Programda kullanılan fonksiyonların prototipleri tanımlandı.
 bool firma_kontrol(string firmaNo);
 bool siparis_kontrol(string siparisNo);
 void urun_ekle();
@@ -58,7 +58,7 @@ struct siparisgiris											// Siparis listesinde saklanacak yapi parametreler
 	string tutar, tarih, adet, alan, numara;
 } siparis;
 
-void menu()													// Secim menüsü için void() fonksiyonu uzerinde yapilmaktadir.
+void menu()												// Secim menüsü için void() fonksiyonu uzerinde yapilmaktadir.
 {
 	string urunKodu;
 	string firmaNo;
@@ -148,7 +148,7 @@ void menu()													// Secim menüsü için void() fonksiyonu uzerinde yapil
 
 bool urun_kontrol(string urunKodu)							// Urun kayit bilgisi sorgulamasi yapan fonksiyondur.
 {
-	bool kontrol = 0;										// urunKodu bilgisi kayitli degilse 0 degeri kalir, urun varsa deger 1 olur.
+	bool kontrol = 0;								// urunKodu bilgisi kayitli degilse 0 degeri kalir, urun varsa deger 1 olur.
 	ifstream dosyaoku;
 	dosyaoku.open("urun.txt");
 
@@ -167,7 +167,7 @@ bool urun_kontrol(string urunKodu)							// Urun kayit bilgisi sorgulamasi yapan
 
 bool firma_kontrol(string firmaNo)							// Firma bilgileri ile ilgili islem yapilacaginda cagirilan firma kontrol fonksiyonudur.
 {
-	bool kontrol = 0;										// Baslangicta 0 degerini almaktadir. Firma kayitli ise 1 degeri alır.
+	bool kontrol = 0;								// Baslangicta 0 degerini almaktadir. Firma kayitli ise 1 degeri alır.
 	ifstream dosyaoku;
 	dosyaoku.open("cari.txt");
 
@@ -185,7 +185,7 @@ bool firma_kontrol(string firmaNo)							// Firma bilgileri ile ilgili islem yap
 
 bool siparis_kontrol(string siparisNo)						// Siparis kaydi olusturulacaginda cagirilan kontrol fonksiyonudur, essiz deger alir.
 {
-	bool kontrol = 0;										// Baslangicta 0 degerini almaktadir. Siparis mevcut ise 1 degeri alır.
+	bool kontrol = 0;							// Baslangicta 0 degerini almaktadir. Siparis mevcut ise 1 degeri alır.
 	ifstream dosyaoku;
 	dosyaoku.open("liste.txt");
 
@@ -202,7 +202,7 @@ bool siparis_kontrol(string siparisNo)						// Siparis kaydi olusturulacaginda c
 	return kontrol;
 }
 
-void urun_ekle()											// Programa urun eklenmesini ve bu urunu dosya uzerine kaydetmeyi saglayan fonksiyondur.
+void urun_ekle()									// Programa urun eklenmesini ve bu urunu dosya uzerine kaydetmeyi saglayan fonksiyondur.
 {
 	string urunKodu;
 	ofstream dosyayaz;
@@ -237,7 +237,7 @@ void urun_ekle()											// Programa urun eklenmesini ve bu urunu dosya uzerin
 void urun_arama(string urunKodu)							// Dosyada kayitli urunun kod numarasina gore aranmasini saglamaktadir.
 {
 	ifstream dosyaoku;
-	dosyaoku.open("urun.txt", ios::app);					// Yalnizca okuma yapilacak sekilde dosya acilmistir.
+	dosyaoku.open("urun.txt", ios::app);						// Yalnizca okuma yapilacak sekilde dosya acilmistir.
 
 	if (urun_kontrol(urunKodu) == 0)						// Urun kontrol fonksiyonu ile kayit sorgulanir.
 	{
@@ -268,7 +268,7 @@ void urun_arama(string urunKodu)							// Dosyada kayitli urunun kod numarasina 
 	dosyaoku.close();
 }
 
-void urun_listele()											// Dosyada yer alan urunleri gosteren fonksiyondur.
+void urun_listele()									// Dosyada yer alan urunleri gosteren fonksiyondur.
 {
 	ifstream dosyaoku;
 	dosyaoku.open("urun.txt", ios::app);
@@ -330,7 +330,7 @@ void urun_duzeltme(string urunKodu)							// Urun kaydinin  istenen urun uzerind
 		dosyaoku.close();
 		dosyayaz.close();
 
-		if (kontrol == 1)					// Dosya uzerinde degisiklik yapildiysa kaydin tutulmasini saglamaktadir.
+		if (kontrol == 1)							// Dosya uzerinde degisiklik yapildiysa kaydin tutulmasini saglamaktadir.
 		{
 			remove("urun.txt");
 			rename("urun_duzenle.txt", "urun.txt");
@@ -350,7 +350,7 @@ void urun_sil(string urunKodu)								// Secilen urunun kaydini silen fonksiyon.
 	dosyaoku.open("urun.txt");
 	dosyayaz.open("gecici_urun.txt", ios::app);
 
-	bool degisim_kontrol = 0;								// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
+	bool degisim_kontrol = 0;							// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
 
 	if (urun_kontrol(urunKodu) == 0)						// Urun kontrol fonksiyonuyla urunun kaydi sorgulanir.
 	{
@@ -371,7 +371,7 @@ void urun_sil(string urunKodu)								// Secilen urunun kaydini silen fonksiyon.
 	dosyaoku.close();
 	dosyayaz.close();
 
-	if (degisim_kontrol == 1)								// Dosya uzerinde degisiklik yapildiysa eski dosya silinir, gecici dosyanin adi degistirilir.
+	if (degisim_kontrol == 1)							// Dosya uzerinde degisiklik yapildiysa eski dosya silinir, gecici dosyanin adi degistirilir.
 	{
 		remove("urun.txt");
 		rename("gecici_urun.txt", "urun.txt");
@@ -383,7 +383,7 @@ void urun_sil(string urunKodu)								// Secilen urunun kaydini silen fonksiyon.
 	}
 }
 
-void musteri_ekle()											// Cari dosyasina musteri eklemek icin bu fonksiyon kullanilir. 
+void musteri_ekle()									// Cari dosyasina musteri eklemek icin bu fonksiyon kullanilir. 
 {
 	string firmaNo;
 	ofstream dosyayaz;
@@ -480,7 +480,7 @@ void musteri_duzeltme(string firmaNo)						// Musteriler uzerinde duzenleme yapi
 		dosyaoku.close();
 		dosyayaz.close();
 
-		if (kontrol == 1)									// Dosya uzerinde degisiklik yapildiginda gecici dosyanin ismini degistirerek kaydeder, ilk dosyayi siler.
+		if (kontrol == 1)							// Dosya uzerinde degisiklik yapildiginda gecici dosyanin ismini degistirerek kaydeder, ilk dosyayi siler.
 		{
 			remove("cari.txt");
 			rename("cari_duzenle.txt", "cari.txt");
@@ -501,7 +501,7 @@ void musteri_silme(string firmaNo)							// Dosyada yer alan firma kaydinin sili
 	dosyaoku.open("cari.txt");
 	dosyayaz.open("gecici_cari.txt", ios::app);
 
-	bool degisim_kontrol = 0;								// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
+	bool degisim_kontrol = 0;							// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
 
 	if (firma_kontrol(firmaNo) == 0)						// Firma kontrol fonksiyonu cagirilarak firma kaydir sorgulanir.
 	{
@@ -521,7 +521,7 @@ void musteri_silme(string firmaNo)							// Dosyada yer alan firma kaydinin sili
 	dosyaoku.close();
 	dosyayaz.close();
 
-	if (degisim_kontrol == 1)								// Dosya icinde bir kayit silindiyse dosya ismi degistirilir ve gecici dosya silinir.
+	if (degisim_kontrol == 1)							// Dosya icinde bir kayit silindiyse dosya ismi degistirilir ve gecici dosya silinir.
 	{
 		remove("cari.txt");
 		rename("gecici_cari.txt", "cari.txt");
@@ -616,14 +616,14 @@ void siparis_arama(string siparisNo)							// Siparis aramasi yapmak icin bu fon
 	dosyaoku.close();
 }
 
-void siparis_sil(string siparisNo)						// Dosyada yer alan siparis kaydinin silinmesini saglayan fonksiyondur.
+void siparis_sil(string siparisNo)							// Dosyada yer alan siparis kaydinin silinmesini saglayan fonksiyondur.
 {
 	ifstream dosyaoku;
 	ofstream dosyayaz;
 	dosyaoku.open("liste.txt");
 	dosyayaz.open("gecici_liste.txt", ios::app);
 
-	bool degisim_kontrol = 0;								// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
+	bool degisim_kontrol = 0;							// Dosya uzerinde degisim yapilma durumunu kontrol eder, degisim yapildinda deger 1 olarak degistirilir. 
 
 	if (siparis_kontrol(siparisNo) == 0)						// Siparis kontrol fonksiyonu cagirilarak siparis kaydir sorgulanir.
 	{
@@ -643,7 +643,7 @@ void siparis_sil(string siparisNo)						// Dosyada yer alan siparis kaydinin sil
 	dosyaoku.close();
 	dosyayaz.close();
 
-	if (degisim_kontrol == 1)								// Dosya icinde bir kayit silindiyse dosya ismi degistirilir ve gecici dosya silinir.
+	if (degisim_kontrol == 1)							// Dosya icinde bir kayit silindiyse dosya ismi degistirilir ve gecici dosya silinir.
 	{
 		remove("liste.txt");
 		rename("gecici_liste.txt", "liste.txt");
@@ -655,7 +655,7 @@ void siparis_sil(string siparisNo)						// Dosyada yer alan siparis kaydinin sil
 	}
 }
 
-void siparis_duzelt(string siparisNo)						// Siparis duzeltme fonksiyonudur, siparis numarasi degistirilemez.
+void siparis_duzelt(string siparisNo)							// Siparis duzeltme fonksiyonudur, siparis numarasi degistirilemez.
 {
 	ifstream dosyaoku;
 	ofstream dosyayazliste;
