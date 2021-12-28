@@ -183,9 +183,9 @@ bool firma_kontrol(string firmaNo)							// Firma bilgileri ile ilgili islem yap
 	return kontrol;
 }
 
-bool siparis_kontrol(string siparisNo)						// Siparis kaydi olusturulacaginda cagirilan kontrol fonksiyonudur, essiz deger alir.
+bool siparis_kontrol(string siparisNo)							// Siparis kaydi olusturulacaginda cagirilan kontrol fonksiyonudur, essiz deger alir.
 {
-	bool kontrol = 0;							// Baslangicta 0 degerini almaktadir. Siparis mevcut ise 1 degeri alır.
+	bool kontrol = 0;								// Baslangicta 0 degerini almaktadir. Siparis mevcut ise 1 degeri alır.
 	ifstream dosyaoku;
 	dosyaoku.open("liste.txt");
 
